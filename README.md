@@ -1,5 +1,12 @@
 # NL-SQL Prototype
 
+![Python](https://img.shields.io/badge/Python-3.9-blue)
+![SQLite](https://img.shields.io/badge/DB-SQLite-yellow)
+![PostgreSQL](https://img.shields.io/badge/DB-Postgres-blue)
+![MySQL](https://img.shields.io/badge/DB-MySQL-orange)
+![License: MIT](https://img.shields.io/badge/License-MIT-green)
+
+
 Convert natural language queries into SQL!  
 Supports **SQLite, PostgreSQL, and MySQL**.  
 
