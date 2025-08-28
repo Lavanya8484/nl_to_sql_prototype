@@ -1,24 +1,25 @@
-# NL-to-SQL Multi-DB Prototype (Minimal)
-This is a minimal FastAPI prototype demonstrating:
-- simple NL -> SQL translation (rule-based)
-- schema introspection (SQLite used to simulate Postgres/MySQL/SQLite)
-- safe parameterized execution with SQLAlchemy (demo uses sqlite3 for simplicity)
-- lightweight audit logging and role-based masking (email masking)
-- demo scripts and sample DBs
+# NL-SQL Prototype
 
-## How to run (locally)
-1. Install dependencies:
-   ```bash
-   pip install fastapi uvicorn sqlalchemy pydantic
-   ```
-2. Start the API:
-   ```bash
-   uvicorn app.main:app --reload
-   ```
-3. Example query (curl):
-   ```bash
-   curl -X POST "http://127.0.0.1:8000/query" -H "Content-Type: application/json" -d '{"nl_query":"Show me all customers from California", "db":"postgresql"}'
-   ```
-Notes:
-- This repository is a minimal demonstration. In production you'd use real Postgres/MySQL/Mongo,
-  proper LLM-based NL->SQL translation, connection pooling, RBAC backends, etc.
+Convert natural language queries into SQL!  
+Supports **SQLite, PostgreSQL, and MySQL**.  
+
+## Features
+- 📝 Natural language to SQL conversion  
+- 🛡️ Security checks for safe queries  
+- 📂 Schema caching for performance  
+- 🗄️ Multi-database support (SQLite, Postgres, MySQL)  
+
+## Quick Start
+```bash
+git clone https://github.com/YOUR_USERNAME/nl-sql-prototype.git
+cd nl-sql-prototype
+pip install -r requirements.txt
+python app/main.py
+```
+Output:
+Initial Page:
+<img width="1370" height="662" alt="image" src="https://github.com/user-attachments/assets/c65c8dbd-40d0-44f6-bbe3-8199c1dcb2bb" />
+
+Actual Output after routing to /docs:
+<img width="1906" height="962" alt="image" src="https://github.com/user-attachments/assets/29128295-7bd0-4f5b-b7d5-bcaa3280ba0d" />
+
