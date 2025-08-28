@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NL → SQL Prototype</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-100 flex flex-col items-center justify-center h-screen">
+    <div class="bg-white shadow-lg rounded-2xl p-6 w-1/2">
+      <h1 class="text-2xl font-bold mb-4">💬 Natural Language → SQL</h1>
+      <form id="query-form" class="flex flex-col space-y-3">
+        <input
+          class="border p-2 rounded"
+          type="text"
+          name="query"
+          placeholder="Type your query in English..."
+          required
+        />
+        <input
+          class="border p-2 rounded"
+          type="text"
+          name="db"
+          placeholder="Database name..."
+          required
+        />
+        <button
+          class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+        >
+          Run
+        </button>
+      </form>
+      <div id="output" class="mt-4 text-gray-700"></div>
+    </div>
+    <script>
+      document.getElementById("query-form").onsubmit = async (e) => {
+        e.preventDefault();
+        const form = new FormData(e.target);
+        const res = await fetch("/query", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            query: form.get("query"),
+            db: form.get("db"),
+          }),
+        });
+        const data = await res.json();
+        document.getElementById(
+          "output"
+        ).innerHTML = `<b>Generated SQL:</b><br><code>${data.sql_query}</code>`;
+      };
+    </script>
+  </body>
+</html>
